@@ -117,7 +117,7 @@ export const BentoGridItem = ({
               {description}
             </p>
             {id === 1 && (
-              <p className="text-sm/2 block lg:hidden mt-4">
+              <p className="text-xs block lg:hidden mt-4">
                 Love to Work in AI and Deep Learning. ALong with Web and Android Dev.
               </p>
             )}
