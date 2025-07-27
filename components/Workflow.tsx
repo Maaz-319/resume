@@ -132,12 +132,7 @@ const AceternityIcon = ({ order }: { order: string }) => {
     );
 };
 
-interface IconProps extends React.SVGProps<SVGSVGElement> {
-    className?: string; // Optional className prop
-    // If you have other specific props for Icon, add them here
-  }
-
-export const Icon = ({ className, ...rest }: IconProps) => {
+export const Icon = ({ className, ...rest }: any) => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
