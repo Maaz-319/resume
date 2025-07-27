@@ -27,12 +27,15 @@ function OtherProj() {
                                 alt={company.name}
                                 className="md:w-10 w-5"
                             /> */}
-                            <img
+                            {/* <img
                                 // src={company.nameImg}
                                 alt={company.name}
                                 width={company.id === 4 || company.id === 5 ? 100 : 150}
                                 className="md:w-24 w-20"
-                            />
+                            /> */}
+                            <p className="text-center text-sm md:text-base font-semibold text-gray-700 dark:text-gray-300">
+                                {company.name}
+                            </p>
                         </div>
                     </React.Fragment>
                 ))}
