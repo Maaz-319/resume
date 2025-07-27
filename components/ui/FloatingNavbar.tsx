@@ -27,7 +27,9 @@ export const FloatingNav = ({
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     // Check if current is not undefined and is a number
     if (typeof current === "number") {
-      let direction = current! - scrollYProgress.getPrevious()!;
+      // FIX 1: 'direction' is never reassigned. Use 'const' instead.
+      // Change 'let' to 'const' for 'direction'
+      const direction = current - scrollYProgress.getPrevious()!; // The '!' non-null assertion is safe here as getPrevious() will return a number after the first scroll
 
       if (scrollYProgress.get() < 0.05) {
         setVisible(false);
@@ -60,7 +62,9 @@ export const FloatingNav = ({
           className
         )}
       >
-        {navItems.map((navItem: any, idx: number) => (
+        {/* FIX 2: Unexpected any. Specify a different type for navItem */}
+        {/* Use the already defined type for navItems */}
+        {navItems.map((navItem, idx: number) => ( // Removed 'any' cast
           <a
             key={`link=${idx}`}
             href={navItem.link}

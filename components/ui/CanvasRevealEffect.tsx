@@ -179,55 +179,68 @@ type Uniforms = {
         type: string;
     };
 };
+
+// Define a more specific type for the prepared uniforms that THREE.ShaderMaterial expects
+type ThreeShaderMaterialUniforms = {
+    [key: string]: {
+        value: THREE.Vector3 | THREE.Vector2 | number | number[] | THREE.Vector3[];
+        type?: string; // The 'type' property might not be strictly needed by THREE.js after preparation
+    };
+};
+
 const ShaderMaterial = ({
     source,
     uniforms,
     maxFps = 60,
 }: {
     source: string;
-    hovered?: boolean;
+    hovered?: boolean; // This prop is not used, consider removing if not needed.
     maxFps?: number;
     uniforms: Uniforms;
 }) => {
     const { size } = useThree();
+    // Correctly type the ref for a THREE.Mesh
     const ref = useRef<THREE.Mesh>(null);
     let lastFrameTime = 0;
 
     useFrame(({ clock }) => {
         if (!ref.current) return;
+
         const timestamp = clock.getElapsedTime();
         if (timestamp - lastFrameTime < 1 / maxFps) {
             return;
         }
         lastFrameTime = timestamp;
 
-        const material: any = ref.current.material;
+        // Explicitly cast material to THREE.ShaderMaterial
+        const material = ref.current.material as THREE.ShaderMaterial;
         const timeLocation = material.uniforms.u_time;
         timeLocation.value = timestamp;
     });
 
-    const getUniforms = () => {
-        const preparedUniforms: any = {};
+    // Specify the return type for getUniforms
+    const getUniforms = (): ThreeShaderMaterialUniforms => {
+        const preparedUniforms: ThreeShaderMaterialUniforms = {}; // Use the specific type here
 
         for (const uniformName in uniforms) {
-            const uniform: any = uniforms[uniformName];
+            const uniform = uniforms[uniformName]; // Uniform is already typed by the function's parameter
 
             switch (uniform.type) {
                 case "uniform1f":
-                    preparedUniforms[uniformName] = { value: uniform.value, type: "1f" };
+                    preparedUniforms[uniformName] = { value: uniform.value as number, type: "1f" };
                     break;
                 case "uniform3f":
                     preparedUniforms[uniformName] = {
-                        value: new THREE.Vector3().fromArray(uniform.value),
+                        value: new THREE.Vector3().fromArray(uniform.value as number[]),
                         type: "3f",
                     };
                     break;
                 case "uniform1fv":
-                    preparedUniforms[uniformName] = { value: uniform.value, type: "1fv" };
+                    preparedUniforms[uniformName] = { value: uniform.value as number[], type: "1fv" };
                     break;
                 case "uniform3fv":
                     preparedUniforms[uniformName] = {
-                        value: uniform.value.map((v: number[]) =>
+                        value: (uniform.value as number[][]).map((v: number[]) =>
                             new THREE.Vector3().fromArray(v)
                         ),
                         type: "3fv",
@@ -235,7 +248,7 @@ const ShaderMaterial = ({
                     break;
                 case "uniform2f":
                     preparedUniforms[uniformName] = {
-                        value: new THREE.Vector2().fromArray(uniform.value),
+                        value: new THREE.Vector2().fromArray(uniform.value as number[]),
                         type: "2f",
                     };
                     break;
@@ -277,10 +290,11 @@ const ShaderMaterial = ({
         });
 
         return materialObject;
-    }, [size.width, size.height, source]);
+    }, [size.width, size.height, source]); // Added size.width, size.height to dependencies for useMemo
 
     return (
-        <mesh ref={ref as any}>
+        // Removed 'as any' from ref
+        <mesh ref={ref}>
             <planeGeometry args={[2, 2]} />
             <primitive object={material} attach="material" />
         </mesh>

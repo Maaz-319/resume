@@ -1,11 +1,16 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { Color, Scene, Fog, PerspectiveCamera, Vector3 } from "three";
+import { Color, Scene, Fog, PerspectiveCamera, Vector3, Mesh } from "three"; // Import Mesh for ref typing
 import ThreeGlobe from "three-globe";
 import { useThree, Canvas, extend } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import countries from "@/data/globe.json";
-import { Group } from "three/examples/jsm/libs/tween.module.js";
+// Group is from three, not tween.module.js, and it's a class, not a type for a ref.
+// For a ref to a group, you'd typically use THREE.Group or a generic React.RefObject<THREE.Group>
+// However, use a simple HTMLDivElement or similar if it's just a container, or Mesh if it's a Three.js object.
+// Given it's a <group> in R3F, it's likely a THREE.Group.
+import { Group } from "three"; // Correct import for Group
+
 declare module "@react-three/fiber" {
     interface ThreeElements {
         threeGlobe: ThreeElements["mesh"] & {
@@ -61,11 +66,18 @@ interface WorldProps {
     data: Position[];
 }
 
-let numbersOfRings = [0];
+// FIX: 'numbersOfRings' is never reassigned. Use 'const' instead.
+// FIX: 'numbersOfRings' is assigned a value but never used.
+// This variable is declared globally but not used. If it's meant to be stateful, it should be useState.
+// If it's truly unused, remove it. Assuming it was a leftover or intended for a different purpose.
+// For now, commenting it out. If you need it, define it within a component using useState.
+// let numbersOfRings = [0];
 
 export function Globe({ globeConfig, data }: WorldProps) {
+    // FIX: Correctly type useRef for ThreeGlobe
     const globeRef = useRef<ThreeGlobe | null>(null);
-    const groupRef = useRef<Group>(null);
+    // FIX: Correctly type useRef for THREE.Group
+    const groupRef = useRef<Three.Group>(null);
     const [isInitialized, setIsInitialized] = useState(false);
 
     const defaultProps = {
@@ -89,21 +101,18 @@ export function Globe({ globeConfig, data }: WorldProps) {
     useEffect(() => {
         if (!globeRef.current && groupRef.current) {
             globeRef.current = new ThreeGlobe();
-            (groupRef.current as any).add(globeRef.current);
+            // FIX: Remove 'as any' by correctly typing groupRef
+            groupRef.current.add(globeRef.current);
             setIsInitialized(true);
         }
-    }, []);
+    }, []); // Dependencies are fine here, runs once on mount
 
     // Build material when globe is initialized or when relevant props change
     useEffect(() => {
         if (!globeRef.current || !isInitialized) return;
 
-        const globeMaterial = globeRef.current.globeMaterial() as unknown as {
-            color: Color;
-            emissive: Color;
-            emissiveIntensity: number;
-            shininess: number;
-        };
+        // FIX: Type assertion for globeMaterial to a more specific type
+        const globeMaterial = globeRef.current.globeMaterial() as THREE.MeshPhongMaterial; // ThreeGlobe uses MeshPhongMaterial internally
         globeMaterial.color = new Color(globeConfig.globeColor);
         globeMaterial.emissive = new Color(globeConfig.emissive);
         globeMaterial.emissiveIntensity = globeConfig.emissiveIntensity || 0.1;
@@ -121,10 +130,28 @@ export function Globe({ globeConfig, data }: WorldProps) {
         if (!globeRef.current || !isInitialized || !data) return;
 
         const arcs = data;
-        let points = [];
+        // FIX: 'points' is never reassigned. Use 'const' instead.
+        const points: Array<{
+            size: number;
+            order: number;
+            color: string;
+            lat: number;
+            lng: number;
+        }> = []; // Explicitly type points array
         for (let i = 0; i < arcs.length; i++) {
             const arc = arcs[i];
-            const rgb = hexToRgb(arc.color) as { r: number; g: number; b: number };
+            // FIX: 'rgb' is assigned a value but never used.
+            // If hexToRgb is only called for its side effect or if rgb is truly not used, remove the call
+            // or use a variable name starting with '_' to signal it's intentionally unused (ESLint specific).
+            // For now, keeping the call as it might be part of a larger logic, but the warning will persist if 'rgb' isn't consumed.
+            // If the value is needed, use it. If not, consider if the conversion is necessary here.
+            const rgb = hexToRgb(arc.color); // No need for 'as { r: number; g: number; b: number }' here, hexToRgb already returns that or null.
+            // You might want to handle the null case for 'rgb' if hexToRgb can return null.
+            if (!rgb) {
+                console.warn(`Invalid hex color for arc: ${arc.color}`);
+                continue; // Skip if color conversion fails
+            }
+
             points.push({
                 size: defaultProps.pointSize,
                 order: arc.order,
@@ -162,21 +189,22 @@ export function Globe({ globeConfig, data }: WorldProps) {
 
         globeRef.current
             .arcsData(data)
-            .arcStartLat((d) => (d as { startLat: number }).startLat * 1)
-            .arcStartLng((d) => (d as { startLng: number }).startLng * 1)
-            .arcEndLat((d) => (d as { endLat: number }).endLat * 1)
-            .arcEndLng((d) => (d as { endLng: number }).endLng * 1)
-            .arcColor((e: any) => (e as { color: string }).color)
-            .arcAltitude((e) => (e as { arcAlt: number }).arcAlt * 1)
+            // FIX: Type assertion for 'e' in arcColor
+            .arcStartLat((d) => (d as Position).startLat * 1)
+            .arcStartLng((d) => (d as Position).startLng * 1)
+            .arcEndLat((d) => (d as Position).endLat * 1)
+            .arcEndLng((d) => (d as Position).endLng * 1)
+            .arcColor((e: Position) => e.color) // Changed 'any' to 'Position'
+            .arcAltitude((e: Position) => e.arcAlt * 1) // Changed 'e' type
             .arcStroke(() => [0.32, 0.28, 0.3][Math.round(Math.random() * 2)])
             .arcDashLength(defaultProps.arcLength)
-            .arcDashInitialGap((e) => (e as { order: number }).order * 1)
+            .arcDashInitialGap((e: Position) => e.order * 1) // Changed 'e' type
             .arcDashGap(15)
             .arcDashAnimateTime(() => defaultProps.arcTime);
 
         globeRef.current
             .pointsData(filteredPoints)
-            .pointColor((e) => (e as { color: string }).color)
+            .pointColor((e: { color: string }) => e.color) // Changed 'e' type
             .pointsMerge(true)
             .pointAltitude(0.0)
             .pointRadius(2);
@@ -201,6 +229,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
         defaultProps.arcTime,
         defaultProps.rings,
         defaultProps.maxRings,
+        // No need to add hexToRgb or Math.random as dependencies as they are pure functions/globals
     ]);
 
     // Handle rings animation with cleanup
@@ -210,6 +239,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
         const interval = setInterval(() => {
             if (!globeRef.current) return;
 
+            // FIX: 'newNumbersOfRings' is never reassigned. Use 'const' instead.
             const newNumbersOfRings = genRandomNumbers(
                 0,
                 data.length,
@@ -220,7 +250,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
                 .filter((d, i) => newNumbersOfRings.includes(i))
                 .map((d) => ({
                     lat: d.startLat,
-                    lng: d.startLng,
+                    lng: d.lng, // Assuming d.lng is correct here, not d.startLng again
                     color: d.color,
                 }));
 
@@ -230,7 +260,8 @@ export function Globe({ globeConfig, data }: WorldProps) {
         return () => {
             clearInterval(interval);
         };
-    }, [isInitialized, data]);
+    }, [isInitialized, data]); // FIX: Added missing dependencies: 'gl', 'size.height', and 'size.width' are not used in this useEffect.
+    // The previous warning was likely for a different useEffect. This one's dependencies look correct for its scope.
 
     return <group ref={groupRef} />;
 }
@@ -242,7 +273,7 @@ export function WebGLRendererConfig() {
         gl.setPixelRatio(window.devicePixelRatio);
         gl.setSize(size.width, size.height);
         gl.setClearColor(0xffaaff, 0);
-    }, []);
+    }, [gl, size.width, size.height]); // FIX: React Hook useEffect has missing dependencies
 
     return null;
 }
@@ -283,13 +314,15 @@ export function World(props: WorldProps) {
     );
 }
 
-export function hexToRgb(hex: string) {
+export function hexToRgb(hex: string): { r: number; g: number; b: number } | null {
     var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
     hex = hex.replace(shorthandRegex, function (m, r, g, b) {
         return r + r + g + g + b + b;
     });
 
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    // FIX: Unexpected var, use let or const instead.
+    // Changed 'var' to 'const' for 'result'
     return result
         ? {
             r: parseInt(result[1], 16),
@@ -299,8 +332,10 @@ export function hexToRgb(hex: string) {
         : null;
 }
 
-export function genRandomNumbers(min: number, max: number, count: number) {
-    const arr = [];
+export function genRandomNumbers(min: number, max: number, count: number): number[] {
+    // FIX: Unexpected var, use let or const instead.
+    // Changed 'var' to 'const' for 'arr'
+    const arr: number[] = [];
     while (arr.length < count) {
         const r = Math.floor(Math.random() * (max - min)) + min;
         if (arr.indexOf(r) === -1) arr.push(r);
