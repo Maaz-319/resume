@@ -1,0 +1,112 @@
+4:03:12 PM: Netlify Build                                                 
+4:03:12 PM: ────────────────────────────────────────────────────────────────
+4:03:12 PM: ​
+4:03:12 PM: ❯ Version
+4:03:12 PM:   @netlify/build 34.3.0
+4:03:12 PM: ​
+4:03:12 PM: ❯ Flags
+4:03:12 PM:   accountId: 66c63edfa65a5b7829d310a6
+4:03:12 PM:   baseRelDir: true
+4:03:12 PM:   buildId: 68860759500f795904b3357e
+4:03:12 PM:   deployId: 68860759500f795904b33580
+4:03:12 PM: ​
+4:03:12 PM: ❯ Current directory
+4:03:12 PM:   /opt/build/repo
+4:03:12 PM: ​
+4:03:12 PM: ❯ Config file
+4:03:12 PM:   No config file was defined: using default values.
+4:03:12 PM: ​
+4:03:12 PM: ❯ Context
+4:03:12 PM:   production
+4:03:13 PM: ​
+4:03:13 PM: ❯ Using Next.js Runtime - v5.11.6
+4:03:14 PM: No Next.js cache to restore
+4:03:14 PM: ​
+4:03:14 PM: Build command from Netlify app                                
+4:03:14 PM: ────────────────────────────────────────────────────────────────
+4:03:14 PM: ​
+4:03:14 PM: $ npm run build
+4:03:14 PM: > resume@0.1.0 build
+4:03:14 PM: > next build
+4:03:15 PM: ⚠ No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache
+4:03:15 PM:    ▲ Next.js 15.4.4
+4:03:15 PM:    Creating an optimized production build ...
+4:03:37 PM:  ✓ Compiled successfully in 18.0s
+4:03:37 PM:    Linting and checking validity of types ...
+4:03:41 PM: 
+4:03:41 PM: Failed to compile.
+4:03:41 PM: ./components/Experience.tsx
+4:03:41 PM: 28:29  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+4:03:41 PM: ./components/Footer.tsx
+4:03:41 PM: 37:33  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+4:03:41 PM: ./components/OtherProj.tsx
+4:03:41 PM: 30:29  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+4:03:41 PM: ./components/RecentProjects.tsx
+4:03:41 PM: 20:37  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+4:03:41 PM: 22:33  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+4:03:41 PM: 42:45  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+4:03:41 PM: ./components/Workflow.tsx
+4:03:41 PM: 135:46  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+4:03:41 PM: ./components/ui/BentoGrid.tsx
+4:03:41 PM: 82:13  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+4:03:41 PM: 94:13  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+4:03:41 PM: ./components/ui/CanvasRevealEffect.tsx
+4:03:41 PM: 204:25  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+4:03:41 PM: 210:33  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+4:03:41 PM: 213:28  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+4:03:41 PM: 280:8  Warning: React Hook useMemo has a missing dependency: 'getUniforms'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+4:03:41 PM: 283:27  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+4:03:41 PM: ./components/ui/FloatingNavbar.tsx
+4:03:41 PM: 30:11  Error: 'direction' is never reassigned. Use 'const' instead.  prefer-const
+4:03:41 PM: 63:33  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+4:03:41 PM: ./components/ui/Globe.tsx
+4:03:41 PM: 64:5  Error: 'numbersOfRings' is never reassigned. Use 'const' instead.  prefer-const
+4:03:41 PM: 64:5  Warning: 'numbersOfRings' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+4:03:41 PM: 92:34  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+4:03:41 PM: 124:13  Error: 'points' is never reassigned. Use 'const' instead.  prefer-const
+4:03:41 PM: 127:19  Warning: 'rgb' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+4:03:41 PM: 169:27  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+4:03:41 PM: 245:8  Warning: React Hook useEffect has missing dependencies: 'gl', 'size.height', and 'size.width'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+4:03:41 PM: 287:5  Error: Unexpected var, use let or const instead.  no-var
+4:03:41 PM: 292:5  Error: Unexpected var, use let or const instead.  no-var
+4:03:41 PM: ./components/ui/GradientBg.tsx
+4:03:41 PM: 59:8  Warning: React Hook useEffect has missing dependencies: 'blendingValue', 'fifthColor', 'firstColor', 'fourthColor', 'gradientBackgroundEnd', 'gradientBackgroundStart', 'pointerColor', 'secondColor', 'size', and 'thirdColor'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+4:03:41 PM: 74:8  Warning: React Hook useEffect has missing dependencies: 'curX' and 'curY'. Either include them or remove the dependency array. You can also do a functional update 'setCurX(c => ...)' if you only need 'curX' in the 'setCurX' call.  react-hooks/exhaustive-deps
+4:03:41 PM: ./components/ui/GridGlobe.tsx
+4:03:41 PM: 3:10  Warning: 'motion' is defined but never used.  @typescript-eslint/no-unused-vars
+4:03:41 PM: ./components/ui/InfiniteMovingCards.tsx
+4:03:41 PM: 28:8  Warning: React Hook useEffect has a missing dependency: 'addAnimation'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+4:03:41 PM: ./components/ui/MovingBorders.tsx
+4:03:41 PM: 25:10  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+4:03:41 PM: 30:20  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+4:03:41 PM: 83:20  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+4:03:41 PM: 85:28  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+4:03:41 PM: ./components/ui/TextGenerateEffect.tsx
+4:03:41 PM: 18:9  Error: 'wordsArray' is never reassigned. Use 'const' instead.  prefer-const
+4:03:41 PM: 31:8  Warning: React Hook useEffect has missing dependencies: 'animate', 'duration', and 'filter'. Either include them or remove the dependency array. Mutable values like 'scope.current' aren't valid dependencies because mutating them doesn't re-render the component.  react-hooks/exhaustive-deps
+4:03:41 PM: info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules
+4:03:41 PM: ​
+4:03:41 PM: "build.command" failed                                        
+4:03:41 PM: ────────────────────────────────────────────────────────────────
+4:03:41 PM: ​
+4:03:41 PM:   Error message
+4:03:41 PM:   Command failed with exit code 1: npm run build (https://ntl.fyi/exit-code-1)
+4:03:41 PM: ​
+4:03:41 PM:   Error location
+4:03:41 PM:   In Build command from Netlify app:
+4:03:41 PM:   npm run build
+4:03:41 PM: ​
+4:03:41 PM:   Resolved config
+4:03:41 PM:   build:
+4:03:41 PM:     command: npm run build
+4:03:41 PM:     commandOrigin: ui
+4:03:41 PM:     publish: /opt/build/repo/.next
+4:03:41 PM:     publishOrigin: ui
+4:03:41 PM:   plugins:
+4:03:41 PM:     - inputs: {}
+4:03:41 PM:       origin: ui
+4:03:41 PM:       package: "@netlify/plugin-nextjs"
+4:03:42 PM: Failed during stage 'building site': Build script returned non-zero exit code: 2 (https://ntl.fyi/exit-code-2)
+4:03:42 PM: Build failed due to a user error: Build script returned non-zero exit code: 2
+4:03:42 PM: Failing build: Failed to build site
+4:03:42 PM: Finished processing build request in 52.223s
