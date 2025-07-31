@@ -9,7 +9,6 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Maaz's Portfolio",
   description: "Maaz Bin Asif Portfolio and Resume.",
-  manifest: '/manifest.json',
 };
 
 export default function RootLayout({
