@@ -37,23 +37,7 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  openGraph: {
-    title: 'Maaz Bin Asif | Software Developer Portfolio',
-    description: 'Explore my projects, skills, and work as a full-stack developer building smart, modern digital experiences.',
-    url: 'https://maaz.me',
-    siteName: 'Maaz Bin Asif Portfolio',
-    images: [
-      {
-        url: 'https://maaz.me/pfp.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Preview of Maaz Bin Asif Portfolio',
-      },
-    ],
-    locale: 'en_US',
-    type: 'website',
-  },
-};
+  };
 
 export default function RootLayout({
   children,
