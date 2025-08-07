@@ -8,7 +8,51 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Maaz Bin Asif",
-  description: "Maaz Bin Asif Portfolio and Resume.",
+  description: "Maaz Bin Asif Portfolio and Resume. I’m a passionate Software Developer and Computer Science student building modern web apps, AI tools, and mobile experiences using Next.js, Python, Kotlin, and more.",
+  keywords: [
+    'Maaz Bin Asif',
+    'Software Developer',
+    'Web Developer Portfolio',
+    'AI Projects | RAG',
+    'Next.js Developer',
+    'Frontend Developer',
+    'Mobile App Developer',
+    'Python',
+    'Kotlin',
+    'React',
+    'Portfolio Website',
+  ],
+  authors: [{ name: 'Maaz Bin Asif', url: 'https://maaz.me' }],
+  creator: 'Maaz Bin Asif',
+  publisher: 'Maaz Bin Asif',
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    title: 'Maaz Bin Asif | Software Developer Portfolio',
+    description: 'Explore my projects, skills, and work as a full-stack developer building smart, modern digital experiences.',
+    url: 'https://maaz.me',
+    siteName: 'Maaz Bin Asif Portfolio',
+    images: [
+      {
+        url: 'https://maaz.me/pfp.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Preview of Maaz Bin Asif Portfolio',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({
