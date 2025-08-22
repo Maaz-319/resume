@@ -5,6 +5,9 @@ import { TextGenerateEffect } from './ui/TextGenerateEffect';
 import MagicButton from './ui/MagicButton';
 import { FaLocationArrow } from 'react-icons/fa';
 import { gen_words, main_heading, top_sm_text } from '@/data';
+import WaveText from './animations/waveBounce';
+import ColorCycleText from './animations/changeTextColor';
+import ScrambleText from './animations/fadeScaleText';
 
 
 function Hero() {
@@ -37,7 +40,7 @@ function Hero() {
             <div className="flex justify-center relative my-20 z-10">
                 <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
                     <h2 className="uppercase tracking-wider text-xs text-center text-blue-100">
-                        {top_sm_text}
+                        <ColorCycleText text={top_sm_text} />
                     </h2>
 
                     <TextGenerateEffect
@@ -46,7 +49,7 @@ function Hero() {
                     />
 
                     <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
-                        {main_heading}
+                        <ScrambleText />
                     </p>
 
                     <a href="https://www.github.com/maaz-319" target='_blank'>
@@ -56,6 +59,10 @@ function Hero() {
                             position='right'
                         />
                     </a>
+
+                    <p className="tracking-wider text-sm text-center text-yellow-400 mt-8">
+                        <WaveText text_to_animate="Hi, I'm Maaz/" />
+                    </p>
                 </div>
             </div>
         </div >

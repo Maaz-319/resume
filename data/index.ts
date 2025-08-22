@@ -212,3 +212,4 @@ export const rightList = ['Kotlin', 'RAG', 'Langchain']
 export const top_sm_text = "Software Developer - AI/ML - Web Developer - RAG/Langchain"
 export const main_heading = "Welcome to my Porfolio Website"
 export const gen_words = "Transforming Your Ideas into Reality through <Code/>"
+export const author_name = "Maaz Bin Asif"
