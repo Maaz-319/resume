@@ -213,3 +213,4 @@ export const top_sm_text = "Software Developer - AI/ML - Web Developer - RAG/Lan
 export const main_heading = "Welcome to my Porfolio Website"
 export const gen_words = "Transforming Your Ideas into Reality through <Code/>"
 export const author_name = "Maaz Bin Asif"
+export const animated_phrases = ["Welcome to My Portfolio 😊", "See my Github 👇", "Scroll to See Projects 🧑‍💻"];

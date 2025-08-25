@@ -1,4 +1,5 @@
 "use client";
+import { animated_phrases } from "@/data";
 import { useEffect, useRef } from "react";
 
 class TextScramble {
@@ -79,7 +80,7 @@ export default function ScrambleText() {
   useEffect(() => {
     if (!elRef.current) return;
 
-    const phrases = ["Welcome to My Portfolio", "See my Github 👇", "Scroll to See Projects"];
+    const phrases = animated_phrases;
     const fx = new TextScramble(elRef.current);
 
     let counter = 0;
