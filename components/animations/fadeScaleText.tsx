@@ -73,7 +73,6 @@ class TextScramble {
   }
 }
 
-// ✅ React Component
 export default function ScrambleText() {
   const elRef = useRef<HTMLDivElement>(null);
 
