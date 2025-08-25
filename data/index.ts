@@ -1,3 +1,5 @@
+import { desc } from "motion/react-client";
+
 export const navItems = [
     { name: "About", link: "#about" },
     { name: "Projects", link: "#projects" },
@@ -193,17 +195,41 @@ export const socialMedia = [
     {
         id: 1,
         img: "/git.svg",
-        link: 'https://www.github.com/maaz-319/'
+        link: 'https://www.github.com/maaz-319/',
+        title: "GitHub",
+        description: "See Projects on GitHub",
     },
     {
         id: 2,
         img: "/insta.svg",
-        link: 'https://www.instagram.com/maaz.binasif/'
+        link: 'https://www.instagram.com/maaz.binasif/',
+        title: "Instagram",
+        description: "Follow me on Instagram",
+        
     },
     {
         id: 3,
         img: "/link.svg",
-        link: 'https://www.linkedin.com/in/maazbinasif/'
+        link: 'https://www.linkedin.com/in/maazbinasif/',
+        title: "LinkedIn",
+        description: "Connect with me on LinkedIn",
+    },
+];
+
+export const freelancingPlatforms = [
+    {
+        id: 1,
+        img: "/fiverr.svg",
+        link: 'https://www.fiverr.com/programmersite',
+        title: "Fiverr",
+        description: "Hire me on Fiverr",
+    },
+    {
+        id: 2,
+        img: "/upwork.svg",
+        link: 'https://www.upwork.com/freelancers/~0125097fa43a4543ff?mp_source=share',
+        title: "Upwork",
+        description: "See my Upwork",
     },
 ];
 
@@ -213,4 +239,11 @@ export const top_sm_text = "Software Developer - AI/ML - Web Developer - RAG/Lan
 export const main_heading = "Welcome to my Porfolio Website"
 export const gen_words = "Transforming Your Ideas into Reality through <Code/>"
 export const author_name = "Maaz Bin Asif"
-export const animated_phrases = ["Welcome to My Portfolio 😊", "See my Github 👇", "Scroll to See Projects 🧑‍💻"];
+export const animated_phrases = ["Welcome to My Portfolio 😊", "See my Github 👇", "Scroll Down to Explore ⬇️"];
+export type Theme =
+| "instagram"
+| "facebook"
+| "github"
+| "linkedin"
+| "fiverr"
+| "upwork";

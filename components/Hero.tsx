@@ -1,20 +1,19 @@
 import React from 'react'
-import { Spotlight } from './ui/Spotligh';
 import { TextGenerateEffect } from './ui/TextGenerateEffect';
 import MagicButton from './ui/MagicButton';
 import { FaLocationArrow } from 'react-icons/fa';
-import { gen_words, top_sm_text } from '@/data';
+import { freelancingPlatforms, gen_words, top_sm_text } from '@/data';
 import WaveText from './animations/waveBounce';
 import ColorCycleText from './animations/changeTextColor';
 import ScrambleText from './animations/fadeScaleText';
 import Aurora from './ui/HeroBg';
 import Image from 'next/image';
-
+import SocialButton from './ui/socialButtons';
 
 function Hero() {
     return (
         <div className="pb-20 pt-36">
-            <div className='hidden md:block'>
+            {/* <div className='hidden md:block'>
                 <Spotlight
                     className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
                     fill="white"
@@ -24,7 +23,7 @@ function Hero() {
                     fill="purple"
                 />
                 <Spotlight className="left-80 top-28 h-[80vh] w-[50vw]" fill="blue" />
-            </div>
+            </div> */}
 
             <div className="flex h-screen w-full items-center justify-center bg-black-100 absolute top-0 left-0 hidden md:block">
                 {/* <div
@@ -57,7 +56,7 @@ function Hero() {
             </div>
 
 
-            <div className="flex justify-center relative md:my-20 z-10">
+            <div className="flex justify-center relative md:mt-20 z-10">
                 <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
                     <h2 className="uppercase tracking-wider text-xs text-center text-blue-100">
                         <ColorCycleText text={top_sm_text} />
@@ -68,13 +67,13 @@ function Hero() {
                         words={gen_words}
                     />
 
-                    <p className="text-center md:tracking-wider text-sm md:text-lg lg:text-2xl">
+                    <p className="text-center md:tracking-wider text-sm md:text-lg lg:text-2xl text-purple-400">
                         <ScrambleText />
                     </p>
 
                     <a href="https://www.github.com/maaz-319" target='_blank' className='my-8'>
                         <MagicButton
-                            title="Show My Work"
+                            title="Explore My Projects"
                             icon={<FaLocationArrow />}
                             position='right'
                         />
@@ -85,6 +84,26 @@ function Hero() {
                     </p>
                 </div>
             </div>
+            <div className="text-white mt-10 z-10 relative w-full">
+                <div
+                    className="
+      grid gap-4 w-full
+      grid-cols-1
+      sm:grid-cols-2
+    "
+                >
+                    {freelancingPlatforms.map((item) => (
+                        <SocialButton
+                            key={item.id}
+                            theme={item.title}
+                            href={item.link}
+                            title={item.description}
+                            className="w-full justify-center"
+                        />
+                    ))}
+                </div>
+            </div>
+
         </div >
     );
 }
