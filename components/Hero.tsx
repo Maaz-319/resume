@@ -8,7 +8,7 @@ import WaveText from './animations/waveBounce';
 import ColorCycleText from './animations/changeTextColor';
 import ScrambleText from './animations/fadeScaleText';
 import Aurora from './ui/HeroBg';
-import Plasma from './ui/HeroBgsmdevices';
+import Image from 'next/image';
 
 
 function Hero() {
@@ -44,44 +44,35 @@ function Hero() {
                 />
                 {/* <div className="pointer-events-none absolute inset-0 flex items-center justify-center [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] bg-black-100"></div> */}
             </div>
-            <div className="flex h-screen w-full items-center justify-center bg-black-100 absolute top-0 left-0 md:hidden">
-                {/* <div
-                    className={cn(
-                        "absolute inset-0",
-                        "[background-size:40px_40px]",
-                        "[background-image:linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]",
-                        // "[background-image:linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]",
-                    )}
-                /> */}
-                <div className="bg-transparent h-[100vh] w-full">
+            <div className="absolute inset-0 h-screen w-full md:hidden overflow-hidden">
+                <Image
+                    src="/smalldevicesbg.png"
+                    alt="Hero background"
+                    fill
+                    priority
+                    className="absolute inset-0 object-cover blur-sm"
+                />
 
-                    <Plasma
-                        color="#ff6b35"
-                        speed={0.6}
-                        direction="forward"
-                        scale={1.1}
-                        opacity={0.8}
-                        mouseInteractive={true}
-                    />
-                </div>
+                <div className="absolute inset-0 bg-black/60" />
             </div>
 
-            <div className="flex justify-center relative my-20 z-10">
+
+            <div className="flex justify-center relative md:my-20 z-10">
                 <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
                     <h2 className="uppercase tracking-wider text-xs text-center text-blue-100">
                         <ColorCycleText text={top_sm_text} />
                     </h2>
 
                     <TextGenerateEffect
-                        className="text-center text-[40px] md:text-5xl lg:text-6xl"
+                        className="text-center text-[40px] md:text-5xl lg:text-6xl my-4"
                         words={gen_words}
                     />
 
-                    <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
+                    <p className="text-center md:tracking-wider text-sm md:text-lg lg:text-2xl">
                         <ScrambleText />
                     </p>
 
-                    <a href="https://www.github.com/maaz-319" target='_blank'>
+                    <a href="https://www.github.com/maaz-319" target='_blank' className='my-8'>
                         <MagicButton
                             title="Show My Work"
                             icon={<FaLocationArrow />}
@@ -89,7 +80,7 @@ function Hero() {
                         />
                     </a>
 
-                    <p className="tracking-wider text-sm text-center text-yellow-400 mt-8">
+                    <p className="tracking-wider text-sm text-center text-yellow-400">
                         <WaveText text_to_animate="Hi, I'm Maaz/" />
                     </p>
                 </div>
