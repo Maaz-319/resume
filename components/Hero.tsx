@@ -4,16 +4,18 @@ import { cn } from '@/lib/utils';
 import { TextGenerateEffect } from './ui/TextGenerateEffect';
 import MagicButton from './ui/MagicButton';
 import { FaLocationArrow } from 'react-icons/fa';
-import { gen_words, main_heading, top_sm_text } from '@/data';
+import { gen_words, top_sm_text } from '@/data';
 import WaveText from './animations/waveBounce';
 import ColorCycleText from './animations/changeTextColor';
 import ScrambleText from './animations/fadeScaleText';
+import Aurora from './ui/HeroBg';
+import Plasma from './ui/HeroBgsmdevices';
 
 
 function Hero() {
     return (
         <div className="pb-20 pt-36">
-            <div>
+            <div className='hidden md:block'>
                 <Spotlight
                     className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
                     fill="white"
@@ -25,16 +27,44 @@ function Hero() {
                 <Spotlight className="left-80 top-28 h-[80vh] w-[50vw]" fill="blue" />
             </div>
 
-            <div className="flex h-screen w-full items-center justify-center bg-black-100 absolute top-0 left-0">
-                <div
+            <div className="flex h-screen w-full items-center justify-center bg-black-100 absolute top-0 left-0 hidden md:block">
+                {/* <div
                     className={cn(
                         "absolute inset-0",
                         "[background-size:40px_40px]",
                         "[background-image:linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]",
                         // "[background-image:linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]",
                     )}
+                /> */}
+
+                <Aurora
+                    colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
+                    blend={0.5}
+                    amplitude={1.0}
+                    speed={0.5}
                 />
-                <div className="pointer-events-none absolute inset-0 flex items-center justify-center [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] bg-black-100"></div>
+                {/* <div className="pointer-events-none absolute inset-0 flex items-center justify-center [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] bg-black-100"></div> */}
+            </div>
+            <div className="flex h-screen w-full items-center justify-center bg-black-100 absolute top-0 left-0 md:hidden">
+                {/* <div
+                    className={cn(
+                        "absolute inset-0",
+                        "[background-size:40px_40px]",
+                        "[background-image:linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]",
+                        // "[background-image:linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]",
+                    )}
+                /> */}
+                <div className="bg-transparent h-[100vh] w-full">
+
+                    <Plasma
+                        color="#ff6b35"
+                        speed={0.6}
+                        direction="forward"
+                        scale={1.1}
+                        opacity={0.8}
+                        mouseInteractive={true}
+                    />
+                </div>
             </div>
 
             <div className="flex justify-center relative my-20 z-10">

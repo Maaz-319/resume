@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     'React',
     'Portfolio Website',
   ],
-  authors: [{ name: 'Maaz Bin Asif', url: 'https://maaz.me' }],
+  authors: [{ name: 'Maaz Bin Asif', url: 'https://maazai.tech' }],
   creator: 'Maaz Bin Asif',
   publisher: 'Maaz Bin Asif',
   robots: {
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  };
+};
 
 export default function RootLayout({
   children,
@@ -56,7 +56,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+            {children}
         </ThemeProvider>
       </body>
     </html>
