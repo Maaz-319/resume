@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     'React',
     'Portfolio Website',
   ],
-  authors: [{ name: 'Maaz Bin Asif', url: 'https://maaz.me' }],
+  authors: [{ name: 'Maaz Bin Asif', url: 'https://maazai.tech' }],
   creator: 'Maaz Bin Asif',
   publisher: 'Maaz Bin Asif',
   robots: {
