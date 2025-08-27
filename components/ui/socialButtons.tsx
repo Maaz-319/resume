@@ -2,10 +2,11 @@
 "use client";
 import { Theme } from "@/data";
 import { FaGithub, FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
-import { SiFiverr, SiUpwork } from "react-icons/si"; // add these icons
+import { SiFiverr, SiUpwork } from "react-icons/si";
+import { JSX } from 'react';
 
 interface SocialButtonProps {
-  theme: string; // flexible, will normalize
+  theme: string;
   title: string;
   href: string;
   className?: string;
