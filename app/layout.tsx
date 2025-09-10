@@ -48,14 +48,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-1RPMTN7G4K"></Script>
-        <Script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'G-1RPMTN7G4K');
-        </Script>
         <link rel="icon" href="/icon.ico" sizes="any" />
       </head>
       <body className={inter.className}>
