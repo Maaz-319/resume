@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
+import Script from 'next/script'
 import "./globals.css";
 import { ThemeProvider } from "./provider";
 
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  };
+};
 
 export default function RootLayout({
   children,
@@ -47,7 +48,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/jsm-logo.png" sizes="any" />
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-1RPMTN7G4K"></Script>
+        <Script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-1RPMTN7G4K');
+        </Script>
+        <link rel="icon" href="/icon.ico" sizes="any" />
       </head>
       <body className={inter.className}>
         <ThemeProvider
