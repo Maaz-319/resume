@@ -16,6 +16,7 @@ export default function Home() {
           <NavbarCompo />
           <Hero />
           <Grid />
+          {/* <Projects /> */}
           <RecentProjects />
           <OtherProj />
           <Experience />

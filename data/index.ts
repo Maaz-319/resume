@@ -20,7 +20,7 @@ export const gridItems = [
     },
     {
         id: 2,
-        title: "Dedicated to on time project completion",
+        title: "On time project completion",
         description: "",
         className: "lg:col-span-2 md:col-span-3 md:row-span-2",
         imgClassName: "",
@@ -86,7 +86,7 @@ export const projects = [
         des: "Get Information about Latest Movies using IDMB's API",
         img: "/movie.png",
         iconLists: ["/js.png", "/tail.svg", "/jq.png"],
-        link: "https://portfolio.maaz.me/web/assets/movie-info/",
+        link: "https://github.com/Maaz-319/Maaz-319.github.io/tree/main/web/assets/movie-Info",
     },
     {
         id: 3,

@@ -53,7 +53,7 @@ export const BentoGridItem = ({
 
   const [copied, setCopied] = useState(false);
 
-  const handleCopy = () => {
+  const handleCopy = () => {  
     navigator.clipboard.writeText('contactme.maaz.binasif@gmail.com');
     setCopied(true);
   }
@@ -82,11 +82,14 @@ export const BentoGridItem = ({
             <img
               src={img}
               alt={img}
-              className={cn(imgClassName, 'object-cover object-center w-full h-full',
-                // Specific positioning for id=1, ensuring it doesn't take up space in the grid column
-                id === 1 && 'absolute right-0 top-1/2 transform -translate-y-1/2 z-8 rounded-full !w-40 !h-40 md:!w-40 md:!h-40 lg:!w-128 lg:!h-128',
+              className={cn(
+                imgClassName,
+                "object-cover object-center w-full h-full",
+                id === 1 && "!absolute !-top-1/8 md:!top-1 !-right-1/8 !-translate-x-1/2 !z-10 !w-[50%] !h-[145%] sm:!h-auto sm:!w-[50%] md:!w-[30%] md:!h-[130%] lg:!w-[40%] lg:!h-auto !object-contain !object-top !drop-shadow-2xl !select-none bg-gradient-to-br from-purple-500/5 to-blue-500/5 backdrop-blur-sm rounded-xl",
+                // "!absolute !bottom-0 !right-0 !z-10 !w - 28!h - auto sm:!w-36 md:!w-44 lg:!w-56 xl:!w-64 !object-contain !object-bottom !drop-shadow-2xl !select-none",
               )}
             />
+
           )}
         </div>
         <div className={`absolute right-0 -bottom-5 ${id === 5 && 'w-full opacity-80'}`}>
@@ -124,27 +127,29 @@ export const BentoGridItem = ({
           </div>
 
 
-          <div className="font-sans font-bold text-lg lg:text-3xl max-w-96 z-10">
+          <div className={cn(`font-sans font-bold text-lg lg:text-3xl max-w-96 z-10`,
+            id === 2 && "!max-w-100",
+          )}>
             {title}
           </div>
 
           {id === 2 && <GlobeDemo />}
 
           {id === 3 && (
-            <div className="flex gap-1 lg:gap-4 w-full absolute -right-full">
-              <div className="flex flex-col gap-3 md:gap-3 lg:gap-6">
+            <div className="flex gap-1 lg:gap-2 w-full absolute -right-[90%]">
+              <div className="flex flex-col gap-2 md:gap-3 lg:gap-6">
                 {leftList.map((item) => (
-                  <span key={item} className="py-2 lg:py-4 lg-px-3 px-3 text-xs lg:text-base opacity-50 lg:opacity-100 rounded-lg text-center bg-[#10132E]">
+                  <span key={item} className="py-2 lg-px-3 px-3 text-xs lg:text-sm opacity-50 lg:opacity-100 rounded-lg text-center bg-[#10132E]">
                     {item}
                   </span>
                 ))}
 
-                <span className="py-4 px-3 rounded-lg text-center bg-[#10132E]" />
+                <span className="py-3 px-3 rounded-lg text-center bg-[#10132E]" />
               </div>
-              <div className="flex flex-col gap-3 md:gap-3 lg:gap-6">
-                <span className="py-4 px-3 rounded-lg text-center bg-[#10132E]" />
+              <div className="flex flex-col gap-4 md:gap-3 lg:gap-6">
+                <span className="py-3 px-3 rounded-lg text-center bg-[#10132E]" />
                 {rightList.map((item) => (
-                  <span key={item} className="py-2 lg:py-4 lg-px-3 px-3 text-xs lg:text-base opacity-50 lg:opacity-100 rounded-lg text-center bg-[#10132E]">
+                  <span key={item} className="py-2 lg-px-3 px-3 text-xs lg:text-sm opacity-50 lg:opacity-100 rounded-lg text-center bg-[#10132E]">
                     {item}
                   </span>
                 ))}
